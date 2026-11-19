@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.ipynb_checkpoints/
+*_output.ipynb
+.DS_Store
+/AGENTS.md
+/.agents/
+/docs/report*
+.env
+.env.*
+!.env.example
+
+/data/
+*.safetensors

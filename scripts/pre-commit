@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+name=$(git config --get privacy.blockedName || true)
+if [ -z "$name" ]; then
+    echo 'Set privacy.blockedName in your local Git config.' >&2
+    exit 1
+fi
+
+if git ls-files --cached -z | tr '\000' '\n' | grep -iFq -- "$name"; then
+    echo 'A file name contains the blocked login.' >&2
+    exit 1
+fi
+
+status=0
+git grep --cached -a -iFq -e "$name" -- || status=$?
+case "$status" in
+    0) echo 'A file contains the blocked login.' >&2; exit 1 ;;
+    1) exit 0 ;;
+    *) exit "$status" ;;
+esac
