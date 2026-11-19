@@ -25,7 +25,7 @@ Before running 05, copy `answers.jsonl` and `config.json` from 02 to `/content/d
 
 ## LLM evaluation
 
-Download `answers.jsonl` from 05. Run locally with the separately supplied `cards.jsonl` in the benchmark folder. Codex authentication is required.
+Download `answers.jsonl` from 05. Run locally with the separately supplied `cards.jsonl` in the benchmark folder. Codex authentication (codex subscription) is required.
 
 ```bash
 python3.12 -m venv .venv
@@ -36,3 +36,5 @@ python3.12 -m venv .venv
   --answers path/to/answers.jsonl \
   --model gpt-6.1-sol --effort high
 ```
+
+UPD: gpt-6.2-sol was realsed recently and it's slightly more token efficient. A better idea is to run it. However, reports and metrics were obtained using gpt-6.1-sol.
